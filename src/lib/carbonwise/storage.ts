@@ -77,9 +77,15 @@ export function loadStore(): Store {
  * Throws error if validation or save fails (caller responsibility to handle).
  *
  * @param store - Store object to persist (will be validated against storeSchema)
- * @throws Error if store validation fails or localStorage is unavailable/full
+ * @throws Error if store validation fails or localStorage is unavailable/full (QuotaExceededError, ValidationError)
  * @example
- * saveStore(store); // Persists validated store to localStorage
+ * try {
+ *   saveStore(store);
+ * } catch (error) {
+ *   if (error instanceof DOMException && error.name === 'QuotaExceededError') {
+ *     // Handle quota exceeded
+ *   }
+ * }
  */
 export function saveStore(store: Store): void {
   if (!isBrowser()) return;
@@ -89,7 +95,8 @@ export function saveStore(store: Store): void {
     localStorage.setItem(KEY, JSON.stringify(validated));
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
-    console.error("[saveStore] Validation or save failed:", errorMsg);
+    const errorName = error instanceof DOMException ? error.name : "Unknown";
+    console.error(`[saveStore] ${errorName}:`, errorMsg);
     throw error; // Re-throw for caller to handle
   }
 }
