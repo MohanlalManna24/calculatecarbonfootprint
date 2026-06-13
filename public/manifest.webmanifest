@@ -1,0 +1,14 @@
+{
+  "name": "CarbonWise AI",
+  "short_name": "CarbonWise",
+  "description": "Understand, track, and reduce your carbon footprint.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ea",
+  "theme_color": "#1f4d3a",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
