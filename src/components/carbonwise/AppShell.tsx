@@ -36,7 +36,9 @@ export function AppShell({ children }: { children: ReactNode }) {
                       to={n.to}
                       className={cn(
                         "rounded-full px-3 py-1.5 text-sm transition-colors",
-                        active ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+                        active
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:bg-secondary hover:text-foreground",
                       )}
                     >
                       {n.label}
@@ -52,7 +54,10 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-4 pb-28 pt-6 sm:px-6 md:pb-12">{children}</main>
-      <nav aria-label="Mobile" className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/95 backdrop-blur md:hidden">
+      <nav
+        aria-label="Mobile"
+        className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/95 backdrop-blur md:hidden"
+      >
         <ul className="mx-auto flex max-w-md items-center justify-around px-2 py-2">
           {NAV.map((n) => {
             const Icon = n.icon;

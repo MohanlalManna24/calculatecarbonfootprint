@@ -4,7 +4,10 @@ const APP_SHELL = ["/", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(VERSION).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()),
+    caches
+      .open(VERSION)
+      .then((cache) => cache.addAll(APP_SHELL))
+      .then(() => self.skipWaiting()),
   );
 });
 
@@ -40,15 +43,18 @@ self.addEventListener("fetch", (event) => {
 
   // CacheFirst for hashed assets
   event.respondWith(
-    caches.match(req).then((cached) =>
-      cached ||
-      fetch(req).then((res) => {
-        if (res.ok && res.type === "basic") {
-          const copy = res.clone();
-          caches.open(VERSION).then((c) => c.put(req, copy));
-        }
-        return res;
-      }).catch(() => cached),
+    caches.match(req).then(
+      (cached) =>
+        cached ||
+        fetch(req)
+          .then((res) => {
+            if (res.ok && res.type === "basic") {
+              const copy = res.clone();
+              caches.open(VERSION).then((c) => c.put(req, copy));
+            }
+            return res;
+          })
+          .catch(() => cached),
     ),
   );
 });

@@ -24,7 +24,20 @@ describe("storage", () => {
   });
 
   it("updateStore mutates atomically", () => {
-    updateStore((s) => ({ ...s, entries: [{ id: makeId(), date: new Date().toISOString(), category: "food", activity: "Vegan meal", amount: 1, unit: "meal", co2e: 0.4 }] }));
+    updateStore((s) => ({
+      ...s,
+      entries: [
+        {
+          id: makeId(),
+          date: new Date().toISOString(),
+          category: "food",
+          activity: "Vegan meal",
+          amount: 1,
+          unit: "meal",
+          co2e: 0.4,
+        },
+      ],
+    }));
     expect(loadStore().entries).toHaveLength(1);
   });
 

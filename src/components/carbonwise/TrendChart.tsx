@@ -1,4 +1,12 @@
-import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import {
+  ResponsiveContainer,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 
 type Datum = { date: string; co2e: number };
 
@@ -14,13 +22,35 @@ export default function TrendChart({ data }: { data: Datum[] }) {
             </linearGradient>
           </defs>
           <CartesianGrid stroke="var(--color-border)" strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="date" stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-          <YAxis stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
+          <XAxis
+            dataKey="date"
+            stroke="var(--color-muted-foreground)"
+            fontSize={11}
+            tickLine={false}
+            axisLine={false}
+          />
+          <YAxis
+            stroke="var(--color-muted-foreground)"
+            fontSize={11}
+            tickLine={false}
+            axisLine={false}
+          />
           <Tooltip
-            contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12, fontSize: 12 }}
+            contentStyle={{
+              background: "var(--color-card)",
+              border: "1px solid var(--color-border)",
+              borderRadius: 12,
+              fontSize: 12,
+            }}
             labelStyle={{ color: "var(--color-muted-foreground)" }}
           />
-          <Area type="monotone" dataKey="co2e" stroke="var(--color-primary)" strokeWidth={2} fill="url(#g)" />
+          <Area
+            type="monotone"
+            dataKey="co2e"
+            stroke="var(--color-primary)"
+            strokeWidth={2}
+            fill="url(#g)"
+          />
         </AreaChart>
       </ResponsiveContainer>
     </div>

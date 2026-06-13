@@ -15,10 +15,10 @@
 
 ## Targets
 
-| Metric | Target |
-| ------ | ------ |
-| LCP    | ≤ 1.8s on mid-range mobile |
-| TBT    | ≤ 150ms |
-| CLS    | ≤ 0.05 |
-| INP    | ≤ 100ms |
-| Lighthouse Performance | 95+ |
+| Metric                 | Target                     |
+| ---------------------- | -------------------------- |
+| LCP                    | ≤ 1.8s on mid-range mobile |
+| TBT                    | ≤ 150ms                    |
+| CLS                    | ≤ 0.05                     |
+| INP                    | ≤ 100ms                    |
+| Lighthouse Performance | 95+                        |

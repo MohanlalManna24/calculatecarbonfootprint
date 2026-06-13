@@ -17,11 +17,25 @@ export default function CategoryDonut({ data }: { data: Record<Category, number>
     <div className="h-56 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
-          <Pie data={arr} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80} paddingAngle={2}>
-            {arr.map((d) => <Cell key={d.name} fill={COLORS[d.name as Category]} stroke="var(--color-card)" />)}
+          <Pie
+            data={arr}
+            dataKey="value"
+            nameKey="name"
+            innerRadius={50}
+            outerRadius={80}
+            paddingAngle={2}
+          >
+            {arr.map((d) => (
+              <Cell key={d.name} fill={COLORS[d.name as Category]} stroke="var(--color-card)" />
+            ))}
           </Pie>
           <Tooltip
-            contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12, fontSize: 12 }}
+            contentStyle={{
+              background: "var(--color-card)",
+              border: "1px solid var(--color-border)",
+              borderRadius: 12,
+              fontSize: 12,
+            }}
             formatter={(v: number, n: string) => [`${v.toFixed(1)} kg`, n]}
           />
         </PieChart>

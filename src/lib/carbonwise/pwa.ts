@@ -21,11 +21,14 @@ export function registerServiceWorker() {
     url.searchParams.get("sw") === "off";
 
   if (isPreview) {
-    navigator.serviceWorker.getRegistrations?.().then((regs) => {
-      regs.forEach((r) => {
-        if (r.active?.scriptURL.endsWith("/sw.js")) r.unregister();
-      });
-    }).catch(() => {});
+    navigator.serviceWorker
+      .getRegistrations?.()
+      .then((regs) => {
+        regs.forEach((r) => {
+          if (r.active?.scriptURL.endsWith("/sw.js")) r.unregister();
+        });
+      })
+      .catch(() => {});
     return;
   }
 

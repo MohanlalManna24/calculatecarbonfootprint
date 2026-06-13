@@ -25,7 +25,10 @@ function NotFoundComponent() {
           That page drifted off the map. Let's get you back.
         </p>
         <div className="mt-6">
-          <Link to="/" className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+          >
             Go home
           </Link>
         </div>
@@ -47,12 +50,20 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <p className="mt-2 text-sm text-muted-foreground">Try again, or head home.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
           >
             Try again
           </button>
-          <a href="/" className="rounded-full border border-input bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary">Go home</a>
+          <a
+            href="/"
+            className="rounded-full border border-input bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary"
+          >
+            Go home
+          </a>
         </div>
       </div>
     </div>
@@ -66,16 +77,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "theme-color", content: "#1f4d3a" },
       { title: "CarbonWise AI — Track and reduce your carbon footprint" },
-      { name: "description", content: "Understand, track, and reduce your carbon footprint with personalized insights, goals, and achievements. Works offline." },
+      {
+        name: "description",
+        content:
+          "Understand, track, and reduce your carbon footprint with personalized insights, goals, and achievements. Works offline.",
+      },
       { name: "author", content: "CarbonWise" },
       { property: "og:title", content: "CarbonWise AI — Track and reduce your carbon footprint" },
-      { property: "og:description", content: "Understand, track, and reduce your carbon footprint with personalized insights, goals, and achievements. Works offline." },
+      {
+        property: "og:description",
+        content:
+          "Understand, track, and reduce your carbon footprint with personalized insights, goals, and achievements. Works offline.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "CarbonWise AI — Track and reduce your carbon footprint" },
-      { name: "twitter:description", content: "Understand, track, and reduce your carbon footprint with personalized insights, goals, and achievements. Works offline." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e66a8496-ceb3-4a19-86b9-e28f842a4d94/id-preview-852d3c5d--4d05181d-fd67-4246-b4dd-1bb121b8442b.lovable.app-1781330240116.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e66a8496-ceb3-4a19-86b9-e28f842a4d94/id-preview-852d3c5d--4d05181d-fd67-4246-b4dd-1bb121b8442b.lovable.app-1781330240116.png" },
+      {
+        name: "twitter:description",
+        content:
+          "Understand, track, and reduce your carbon footprint with personalized insights, goals, and achievements. Works offline.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e66a8496-ceb3-4a19-86b9-e28f842a4d94/id-preview-852d3c5d--4d05181d-fd67-4246-b4dd-1bb121b8442b.lovable.app-1781330240116.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e66a8496-ceb3-4a19-86b9-e28f842a4d94/id-preview-852d3c5d--4d05181d-fd67-4246-b4dd-1bb121b8442b.lovable.app-1781330240116.png",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -84,7 +115,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "apple-touch-icon", href: "/icon-512.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -109,7 +143,9 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  useEffect(() => { registerServiceWorker(); }, []);
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <StoreProvider>

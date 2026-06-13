@@ -8,7 +8,10 @@ export const Route = createFileRoute("/achievements")({
   head: () => ({
     meta: [
       { title: "Achievements · CarbonWise" },
-      { name: "description", content: "Milestones you've unlocked on your sustainability journey." },
+      {
+        name: "description",
+        content: "Milestones you've unlocked on your sustainability journey.",
+      },
     ],
   }),
   component: AchievementsPage,
@@ -27,13 +30,22 @@ function AchievementsPage() {
         {ACHIEVEMENTS.map((a) => {
           const on = unlocked.get(a.id);
           return (
-            <li key={a.id} className={`rounded-2xl border p-5 ${on ? "border-success/40 bg-card" : "border-border bg-card/60"}`}>
-              <div className={`mb-3 grid size-10 place-items-center rounded-full ${on ? "bg-success text-success-foreground" : "bg-muted text-muted-foreground"}`}>
+            <li
+              key={a.id}
+              className={`rounded-2xl border p-5 ${on ? "border-success/40 bg-card" : "border-border bg-card/60"}`}
+            >
+              <div
+                className={`mb-3 grid size-10 place-items-center rounded-full ${on ? "bg-success text-success-foreground" : "bg-muted text-muted-foreground"}`}
+              >
                 {on ? <Award className="size-5" /> : <Lock className="size-5" />}
               </div>
               <h3 className="font-display text-lg">{a.title}</h3>
               <p className="text-sm text-muted-foreground">{a.desc}</p>
-              {on && <p className="mt-2 text-xs text-success">Unlocked {new Date(on).toLocaleDateString()}</p>}
+              {on && (
+                <p className="mt-2 text-xs text-success">
+                  Unlocked {new Date(on).toLocaleDateString()}
+                </p>
+              )}
             </li>
           );
         })}
