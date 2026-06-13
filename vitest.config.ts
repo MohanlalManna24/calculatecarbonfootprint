@@ -1,5 +1,6 @@
 import { defineConfig } from "vitest/config";
 import tsconfigPaths from "vite-tsconfig-paths";
+import path from "path";
 
 export default defineConfig({
   plugins: [tsconfigPaths()],
@@ -10,6 +11,8 @@ export default defineConfig({
     coverage: { reporter: ["text", "html"] },
   },
   resolve: {
-    alias: { "@": new URL("./src", import.meta.url).pathname },
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
 });
